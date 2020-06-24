@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            margin: auto auto;
+            width: 300px;
+            height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align:center;
+        }
+        input{
+            width: 230px;
+            height: 25px;
+            border-radius:9px;
+            border-color: black;
+            text-align:center;
+            font-size: 18px;
+            color: black;
+            font-family: 黑体;
+        }
+        button{
+            width: 120px;
+            height: 35px;
+            font-size: 25px;
+            font-family: 黑体;
+            color: white;
+            border-radius: 6px;
+        }
+        font{
+            size: 5px;
+            font-family: "黑体";
+            color: black;
+            font-weight: bold;
+        }
+        .err{
+            color: red;
+        }
+        .corr{
+            color: lime;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="/reg_user" method="post">
+            <font>账号：</font>
+            <input type="text" name="user_name" id="userName" placeholder="账号名"/><br>
+            <span id="name_err"></span><br><br>
+            <font>密码：</font>
+            <input type="password" name="user_password" id="userPwd" placeholder="密码"/><br><br><br>
+            <font>手机：</font>
+            <input type="text" name="userPhone" id="userPhone" placeholder="手机号"/><br>
+            <span id="phone_err"></span><br><br>
+            <button type="submit" style="background-color: limegreen; border-color: limegreen;">注册</button>
+            <button type="button" style="background-color: red; border-color: red;" onclick="location.href='/index'">登录</button>
+        </form>
+
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        function reg(){
+            const null_reg=/^\s*$/g;
+        }
+        $("#userPhone").blur(function() {
+            const reg =/^1[3456789]\d{9}$/;
+            const phone = $("#userPhone").val();
+            if(phone!=null){
+                const b = reg.test(phone);
+                if(b==false){
+                    alert("请输入正确的手机号");
+                    $("#phone_err").html("<font class='err'>请输入正确的手机号</font>")
+                }else{
+                    $("#phone_err").html("<font class='corr'>手机号可用</font>")
+                }
+            }
+        });
+        $("#userName").blur(function () {
+            const null_reg=/^\s*$/g;
+            const name = $("#userName").val();
+            if(null_reg.test(name)){
+                $.ajax({
+                    url: "",
+                    data: "",
+                    success:function(data){
+                        if(data==true){
+                            $("#name_err").html("<font class='corr'>账户名可用</font>");
+                        }else{
+                            $("#name_err").html("<font class='err'>账户名已存在</font>")
+                        }
+                    }
+                });
+            }else{
+                $("#name_err").html("<font class='err'>请填写用户名</font>")
+            }
+        });
+    </script>
+</body>
+</html>

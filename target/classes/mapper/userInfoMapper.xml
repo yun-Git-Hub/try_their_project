@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.try_their.try_their_project.dao.UserInfoDao" >
+    <insert id="userAdd" parameterType="com.try_their.try_their_project.entity.UserInfo">
+        insert into userinfo(user_name,user_password,md5_pwd,userName,userID,userPhone,userAddress)
+        values
+        (#{user_name},#{user_password},#{md5_pwd},#{userName},#{userID},#{userPhone},#{userAddress})
+    </insert>
+    <select id="userLogin" parameterType="com.try_their.try_their_project.entity.UserInfo" resultType="com.try_their.try_their_project.entity.UserInfo">
+        select user_name,user_password,userPhone,md5_pwd from userinfo
+        <where>
+            <if test="user_name != null and user_name !='' ">
+                and user_name = #{user_name}
+            </if>
+            <if test="userPhone != null and user_name != ''">
+                and userPhone = #{userPhone}
+            </if>
+            <if test="user_password != null and user_password != ''">
+                and user_password = #{user_password}
+            </if>
+        </where>
+    </select>
+</mapper>
