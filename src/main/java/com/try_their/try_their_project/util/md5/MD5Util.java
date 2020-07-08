@@ -65,15 +65,4 @@ public class MD5Util {
         }
         return null;
     }
-    /**
-     * MD5解密
-     */
-    public static String getMD5Dec(String sourceData){
-        char[] c = sourceData.toCharArray();
-        for (int i = 0; i < c.length; i++) {
-            c[i]=(char)(c[i]^'t');
-        }
-        String s=new String(c);
-        return s;
-    }
 }

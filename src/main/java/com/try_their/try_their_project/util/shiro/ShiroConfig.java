@@ -27,8 +27,12 @@ public class ShiroConfig {
         Map<String,String> filterMap = new LinkedHashMap<>();
         filterMap.put("/index","anon");
         filterMap.put("/user_reg","anon");
-        filterMap.put("/success","authc");
+        filterMap.put("/sidebar","authc");
         filterMap.put("/logout","logout");
+        filterMap.put("/sideOne","authc");
+        filterMap.put("/sideTwo","authc");
+        filterMap.put("/sideThere","authc");
+        filterMap.put("/sideFour","authc");
         factoryBean.setFilterChainDefinitionMap(filterMap);
 
         factoryBean.setLoginUrl("/index");//设置默认登录页面

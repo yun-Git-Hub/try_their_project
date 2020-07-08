@@ -3,17 +3,19 @@ package com.try_their.try_their_project.controller;
 import com.try_their.try_their_project.entity.UserInfo;
 import com.try_their.try_their_project.services.UserInfoService;
 import com.try_their.try_their_project.util.md5.MD5Util;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.session.SessionException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
 
 import static com.try_their.try_their_project.util.md5.MD5Util.getMD5Digest;
 
@@ -24,6 +26,12 @@ public class LoginController {
 
     UsernamePasswordToken token = null;
     Subject subject =null;
+
+    /**
+     * 注册
+     * @param userInfo
+     * @return
+     */
     @RequestMapping("/reg_user")
     public String reg_user(UserInfo userInfo){
         String password = userInfo.getUser_password();
@@ -35,8 +43,15 @@ public class LoginController {
         return "/index";
     }
 
+    /**
+     * 登录
+     * @param userInfo
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping("/user_login")
-    public String user_login(UserInfo userInfo){
+    public String user_login(UserInfo userInfo, Model model, HttpSession session){
         subject = SecurityUtils.getSubject();
         String userPhone = userInfo.getUserPhone();
         String userName = userInfo.getUser_name();
@@ -48,7 +63,9 @@ public class LoginController {
         }
         try {
             subject.login(token);
-            return "success";
+            //model.addAttribute("userName",userInfo.getUser_name());
+            session.setAttribute("userName",userInfo.getUser_name());
+            return "redirect:book_list";
         }catch (UnknownAccountException U){
             U.printStackTrace();
             return "index";
@@ -58,13 +75,32 @@ public class LoginController {
     }
 
 
+    /**
+     * 退出
+     * @param session
+     * @return
+     */
     @RequestMapping("/logout")
-    public String delToken(){
+    public String delToken(HttpSession session){
         try {
             subject.logout();
+            session.removeAttribute("userName");
+            return "redirect:index";
         }catch (SessionException e){
             e.printStackTrace();
         }
-        return "index";
+        return "redirect:index";
     }
+
+    @RequestMapping("/sideOne")
+    public String selectInfo(HttpSession session,Model model){
+        String userName = (String)session.getAttribute("userName");
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUser_name(userName);
+        UserInfo info = infoService.userLogin(userInfo);
+        model.addAttribute("info",info);
+        return "sideOne";
+    }
+
+
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/sidebar.css" type="text/css">
+    <!--<script type="text/javascript" src="js/sidebar.js"></script>-->
+</head>
+<body>
+    <div>
+        <ul>
+            <li class="li_one">
+                <font th:text="${session.userName}"></font>
+            </li>
+            <li tabindex="0" class="li_two 1" onclick="side1()" >系统信息</li>
+            <li tabindex="1" class="li_two 2" onclick="side2()">全部信息</li>
+            <li tabindex="2" class="li_two 3" onclick="side3()">导入</li>
+            <li tabindex="3" class="li_two 4" onclick="side4()">导出</li>
+            <li class="li_two 5" onclick="location.href='logout'">退出</li>
+        </ul>
+    </div>
+</body>
+</html>

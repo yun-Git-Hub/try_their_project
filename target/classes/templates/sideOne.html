@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>系统信息</title>
+</head>
+<body>
+    <div>
+        <table th:each="info,stat : ${info}">
+            <tr>
+                <td>用户名</td>
+                <td th:text="${info['user_name']}"></td>
+            </tr>
+            <tr>
+                <td>注册时间</td>
+                <td th:text="${info['times']}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

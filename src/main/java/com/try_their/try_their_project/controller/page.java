@@ -27,8 +27,18 @@ public class page {
      * 登录成功界面
      * @return
      */
-    @RequestMapping("/success")
+    @RequestMapping("/sidebar")
     public String success(){
-        return "success";
+        return "sidebar";
+    }
+    /**
+     */
+    @RequestMapping("/book_list")
+    public String book_list(){
+        return "book_list";
+    }
+    @RequestMapping("/side1")
+    public String side1(){
+        return "sideOne";
     }
 }

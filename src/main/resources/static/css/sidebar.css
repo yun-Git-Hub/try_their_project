@@ -1,0 +1,38 @@
+
+ul{
+    list-style: none;
+    width: 200px;
+    height: 500px;
+    background-color: darkgray;
+    padding: 0px;
+}
+li{
+    line-height: 40px;
+    color: honeydew;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.li_one{
+    height: 65px;
+}
+.li_two:hover{
+    background-color: black;
+}
+.li_two:focus{
+    background-color: black;
+}
+font{
+    font-family: 微软雅黑;
+    font-weight: bolder;
+    font-size: 36px;
+    color: #007aff;
+}
+button{
+    width: 120px;
+    height: 35px;
+    font-size: 25px;
+    font-family: 新宋体;
+    color: #007aff;
+    border-radius: 6px;
+}

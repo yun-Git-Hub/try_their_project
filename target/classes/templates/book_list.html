@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>book_list</title>
+</head>
+<body style="width: 1000px;margin: 0 auto">
+    <div th:include="sidebar" style="float: left;width: 210px"></div>
+    <div id="text1" style="float: left;text-align: center">
+        <h2>欢迎使用该系统</h2>
+        <p>
+            <h4>
+                本项目是一个非常简单的项目，主要是为了证明本人可以使用java进行web开发！
+            </h4>
+        </p>
+    </div>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        function side1(){
+            $("#text1").load("sideOne");
+        }
+    </script>
+</body>
+
+</html>
