@@ -1,0 +1,12 @@
+#book_Info{
+    text-align: center;
+    width: 500px;
+}
+.title_book{
+    background-color: steelblue;
+    color: black;
+    font-family: 微软雅黑;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+}

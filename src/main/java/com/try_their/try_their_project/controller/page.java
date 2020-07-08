@@ -37,8 +37,4 @@ public class page {
     public String book_list(){
         return "book_list";
     }
-    @RequestMapping("/side1")
-    public String side1(){
-        return "sideOne";
-    }
 }

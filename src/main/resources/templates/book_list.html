@@ -15,7 +15,12 @@
     <script type="text/javascript">
         function side1(){
             $("#text1").load("sideOne");
-
+            document.getElementById("text1").style.display="flex";
+            document.getElementById("text1").style.textAlign="left";
+            document.getElementById("text1").style.paddingTop="0px";
+        }
+        function side2(){
+            $("#text1").load("sideTwo");
             document.getElementById("text1").style.display="flex";
             document.getElementById("text1").style.textAlign="left";
             document.getElementById("text1").style.paddingTop="0px";
