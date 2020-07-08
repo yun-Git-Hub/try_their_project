@@ -7,18 +7,18 @@
 </head>
 <body style="width: 1000px;margin: 0 auto">
     <div th:include="sidebar" style="float: left;width: 210px"></div>
-    <div id="text1" style="float: left;text-align: center">
-        <h2>欢迎使用该系统</h2>
-        <p>
-            <h4>
-                本项目是一个非常简单的项目，主要是为了证明本人可以使用java进行web开发！
-            </h4>
-        </p>
+    <div id="text1" style="float: left;display: block;align-items: center;width: 700px;height: 500px;justify-content: center;text-align: center;padding-top: 120px">
+            <span><h2>欢迎使用该系统</h2></span>
+            <span><h4>本项目是一个非常简单的项目，主要是为了证明本人可以使用java进行web开发！</h4></span>
     </div>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
         function side1(){
             $("#text1").load("sideOne");
+
+            document.getElementById("text1").style.display="flex";
+            document.getElementById("text1").style.textAlign="left";
+            document.getElementById("text1").style.paddingTop="0px";
         }
     </script>
 </body>

@@ -9,12 +9,12 @@
     <div>
         <table th:each="info,stat : ${info}">
             <tr>
-                <td>用户名</td>
-                <td th:text="${info['user_name']}"></td>
+                <td style="color: black;font-size: 36px;font-weight: bold">用户名:</td>
+                <td th:text="${info['user_name']}" style="color: #007aff;font-size: 36px"></td>
             </tr>
             <tr>
-                <td>注册时间</td>
-                <td th:text="${info['times']}"></td>
+                <td style="color: black;font-size: 36px;font-weight: bold">注册时间:</td>
+                <td th:text="${info['times']}"style="color: #007aff;font-size: 36px"></td>
             </tr>
         </table>
     </div>

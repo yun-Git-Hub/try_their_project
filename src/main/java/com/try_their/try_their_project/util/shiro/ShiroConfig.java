@@ -29,6 +29,7 @@ public class ShiroConfig {
         filterMap.put("/user_reg","anon");
         filterMap.put("/sidebar","authc");
         filterMap.put("/logout","logout");
+        filterMap.put("/book_list","authc");
         filterMap.put("/sideOne","authc");
         filterMap.put("/sideTwo","authc");
         filterMap.put("/sideThere","authc");
