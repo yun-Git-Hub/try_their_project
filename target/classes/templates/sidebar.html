@@ -14,11 +14,12 @@
             <li class="li_one">
                 <font th:text="${session.userName}"></font>
             </li>
-            <li tabindex="0" class="li_two 1" onclick="side1()" >个人信息</li>
-            <li tabindex="1" class="li_two 2" onclick="side2()">全部信息</li>
-            <li tabindex="2" class="li_two 3" onclick="side3()">导入</li>
-            <li tabindex="3" class="li_two 4" onclick="side4()">导出</li>
-            <li class="li_two 5" onclick="location.href='logout'">退出</li>
+            <li id="li_1" class="li_two" onclick="side1()" >个人信息</li>
+            <li id="li_2" class="li_two" onclick="side2()">全部信息</li>
+            <li id="li_3" class="li_two" onclick="side3()">添加数据</li>
+            <li id="li_4" class="li_two" onclick="side4()">导入</li>
+            <li id="li_5" class="li_two" onclick="side5()">导出</li>
+            <li id="li_6" class="li_two" onclick="location.href='logout'">退出</li>
         </ul>
     </div>
 </body>

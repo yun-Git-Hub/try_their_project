@@ -17,10 +17,8 @@ li{
     height: 65px;
 }
 .li_two:hover{
-    background-color: black;
-}
-.li_two:focus{
-    background-color: black;
+    background-color: darkolivegreen;
+    cursor:pointer;
 }
 font{
     font-family: 微软雅黑;
