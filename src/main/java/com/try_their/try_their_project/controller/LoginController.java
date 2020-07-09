@@ -27,14 +27,16 @@ public class LoginController {
     Subject subject =null;
 
     /**
-     * 注册
+     * 注册 密码进行md5加盐处理
      * @param userInfo
      * @return
      */
     @RequestMapping("/reg_user")
     public String reg_user(UserInfo userInfo){
         String password = userInfo.getUser_password();
+        //获取随机盐值
         String salt = MD5Util.getSalt(4);
+        //密码加盐 MD5加密
         String pwd = getMD5Digest(password + salt);
         userInfo.setMd5_pwd(salt);
         userInfo.setUser_password(pwd);
@@ -55,6 +57,8 @@ public class LoginController {
         String userPhone = userInfo.getUserPhone();
         String userName = userInfo.getUser_name();
         String userPassword = userInfo.getUser_password();
+        /*两种登录情况
+        * 用户名登录和手机登录*/
         if(userInfo.getUser_name()==null){
             token = new UsernamePasswordToken(userPhone,userPassword);
         }else{
@@ -91,6 +95,12 @@ public class LoginController {
         return "redirect:index";
     }
 
+    /**
+     * 用户个人信息 userName，userTime
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping("/sideOne")
     public String selectInfo(HttpSession session,Model model){
         String userName = (String)session.getAttribute("userName");

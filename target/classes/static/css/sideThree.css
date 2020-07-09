@@ -1,0 +1,30 @@
+input{
+    width: 230px;
+    height: 25px;
+    border-radius:9px;
+    border-color: black;
+    text-align:center;
+    font-size: 18px;
+    color: black;
+    font-family: 黑体;
+}
+button{
+    width: 120px;
+    height: 35px;
+    font-size: 25px;
+    font-family: 黑体;
+    color: white;
+    border-radius: 6px;
+}
+font{
+    size: 5px;
+    font-family: "黑体";
+    color: black;
+    font-weight: bold;
+}
+.err{
+    color: red;
+}
+.corr{
+    color: lime;
+}

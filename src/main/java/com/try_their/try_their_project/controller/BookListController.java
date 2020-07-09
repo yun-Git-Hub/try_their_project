@@ -46,13 +46,16 @@ public class BookListController {
         model.addAttribute("bookLists",bookLists);
         return "sideTwo";
     }
+
+    /**
+     * 添加新的book Info
+     * @param bookList
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/insertBookInfo")
     public String insertBookInfo(BookList bookList,HttpSession session){
-        System.out.println(bookList);
-        System.out.println(bookList.getB_userID());
-        System.out.println(bookList.getB_name());
-        System.out.println(bookList.getB_author());
         if(bookList!=null){
             int user_id = getUser_id(session);
             bookList.setB_userID(user_id);

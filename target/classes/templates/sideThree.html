@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>添加</title>
     <style>
-        input{
+        /*input{
             width: 230px;
             height: 25px;
             border-radius:9px;
@@ -33,8 +33,9 @@
         }
         .corr{
             color: lime;
-        }
+        }*/
     </style>
+    <link rel="stylesheet" href="css/sideThree.css">
 </head>
 <body>
     <form action="/insertBookInfo" name="">
@@ -48,7 +49,7 @@
     </form>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
-        function insertBookInfo() {
+        /*function insertBookInfo() {
             const b_name=$("#b_name").val();
             const b_author=$("#b_author").val();
             const bookList={"b_name":b_name,"b_author":b_author};
@@ -66,25 +67,7 @@
                     }
                 }
             });
-        }
-       /* $("#b_name").blur(function () {
-            const null_reg=/^\s*$/g;
-            const name = $("#b_name").val();
-            if(null_reg.test(name)==false){
-                $("#name_err").html("<font class='corr'>√</font>")
-            }else{
-                $("#name_err").html("<font class='err'>请填写书名</font>")
-            }
-        });
-        $("#b_author").blur(function () {
-            const null_reg=/^\s*$/g;
-            const name = $("#b_author").val();
-            if(null_reg.test(name)==false){
-                $("#author_err").html("<font class='corr'>√</font>")
-            }else{
-                $("#author_err").html("<font class='err'>请填写作者名</font>")
-            }
-        });*/
+        }*/
     </script>
 </body>
 </html>
