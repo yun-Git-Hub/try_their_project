@@ -6,15 +6,17 @@ public class BookList {
     private int b_id;
     private String b_name;
     private String b_author;
+    private int b_userID;
     private Timestamp b_time;
 
     public BookList() {
     }
 
-    public BookList(int b_id, String b_name, String b_author, Timestamp b_time) {
+    public BookList(int b_id, String b_name, String b_author, int b_userID, Timestamp b_time) {
         this.b_id = b_id;
         this.b_name = b_name;
         this.b_author = b_author;
+        this.b_userID = b_userID;
         this.b_time = b_time;
     }
 
@@ -40,6 +42,14 @@ public class BookList {
 
     public void setB_author(String b_author) {
         this.b_author = b_author;
+    }
+
+    public int getB_userID() {
+        return b_userID;
+    }
+
+    public void setB_userID(int b_userID) {
+        this.b_userID = b_userID;
     }
 
     public Timestamp getB_time() {

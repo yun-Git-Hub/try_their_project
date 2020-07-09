@@ -1,24 +1,38 @@
-function sideColor(obj) {
-    if (obj == "li_two 1") {
-        document.getElementsByClassName("li_two 1").style.backgroundColor = "#000000";
-    }
+function side1(){
+    document.getElementById("li_1").style.backgroundColor="black";
+    document.getElementById("li_2").style.backgroundColor="";
+    document.getElementById("li_3").style.backgroundColor="";
+    document.getElementById("li_4").style.backgroundColor="";
+    document.getElementById("li_5").style.backgroundColor="";
+    document.getElementById("li_6").style.backgroundColor="";
+    $("#text1").load("sideOne");
+    document.getElementById("text1").style.display="flex";
+    document.getElementById("text1").style.textAlign="left";
+    document.getElementById("text1").style.paddingTop="0px";
+}
+function side2(){
+    document.getElementById("li_1").style.backgroundColor="";
+    document.getElementById("li_2").style.backgroundColor="black";
+    document.getElementById("li_3").style.backgroundColor="";
+    document.getElementById("li_4").style.backgroundColor="";
+    document.getElementById("li_5").style.backgroundColor="";
+    document.getElementById("li_6").style.backgroundColor="";
+    $("#text1").load("sideTwo");
 
-    else if (obj == 'li_two 2') {
-        document.getElementById("a1").style.color = "#333";
-        document.getElementById("a2").style.color = "#2577e3";
-        document.getElementById("a3").style.color = "#333";
-    }
-    else if (obj == 'li_two 3') {
-        document.getElementById("a1").style.color = "#333";
-        document.getElementById("a2").style.color = "#333";
-        document.getElementById("a3").style.color = "#2577e3";
-    }else if (obj == 'li_two 4') {
-        document.getElementById("a1").style.color = "#333";
-        document.getElementById("a2").style.color = "#333";
-        document.getElementById("a3").style.color = "#2577e3";
-    }else if (obj == 'li_two 5') {
-        document.getElementById("a1").style.color = "#333";
-        document.getElementById("a2").style.color = "#333";
-        document.getElementById("a3").style.color = "#2577e3";
-    }
+    document.getElementById("text1").style.display="flex";
+    document.getElementById("text1").style.textAlign="left";
+    document.getElementById("text1").style.paddingTop="0px";
+}
+function side3(){
+    document.getElementById("li_1").style.backgroundColor="";
+    document.getElementById("li_2").style.backgroundColor="";
+    document.getElementById("li_3").style.backgroundColor="black";
+    document.getElementById("li_4").style.backgroundColor="";
+    document.getElementById("li_5").style.backgroundColor="";
+    document.getElementById("li_6").style.backgroundColor="";
+    $("#text1").load("sideThree");
+
+    document.getElementById("text1").style.display="flex";
+    document.getElementById("text1").style.textAlign="left";
+    document.getElementById("text1").style.paddingTop="0px";
 }

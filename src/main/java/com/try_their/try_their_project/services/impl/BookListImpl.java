@@ -13,8 +13,14 @@ public class BookListImpl implements BookListServices {
     private BookListDao bookListDao;
 
     @Override
-    public ArrayList<BookList> bookInfoAll() {
-        ArrayList<BookList> bookLists = bookListDao.bookInfoAll();
+    public ArrayList<BookList> bookInfoAll(int userID) {
+        ArrayList<BookList> bookLists = bookListDao.bookInfoAll(userID);
         return bookLists;
+    }
+
+    @Override
+    public int insertBookInfo(BookList bookList) {
+        int i = bookListDao.insertBookInfo(bookList);
+        return i;
     }
 }

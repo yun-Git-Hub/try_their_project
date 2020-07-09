@@ -7,5 +7,6 @@ import java.util.ArrayList;
 
 @Mapper
 public interface BookListDao {
-    public ArrayList<BookList> bookInfoAll();
+    public ArrayList<BookList> bookInfoAll(int userID);
+    public int insertBookInfo(BookList bookList);//添加新的bookInfo
 }

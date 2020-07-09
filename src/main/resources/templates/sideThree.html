@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+    <style>
+        input{
+            width: 230px;
+            height: 25px;
+            border-radius:9px;
+            border-color: black;
+            text-align:center;
+            font-size: 18px;
+            color: black;
+            font-family: 黑体;
+        }
+        button{
+            width: 120px;
+            height: 35px;
+            font-size: 25px;
+            font-family: 黑体;
+            color: white;
+            border-radius: 6px;
+        }
+        font{
+            size: 5px;
+            font-family: "黑体";
+            color: black;
+            font-weight: bold;
+        }
+        .err{
+            color: red;
+        }
+        .corr{
+            color: lime;
+        }
+    </style>
+</head>
+<body>
+    <form action="/insertBookInfo" name="">
+        <font>书名：</font>
+        <input type="text" name="b_name" id="b_name" placeholder="书名"/><br>
+        <span id="name_err"></span><br>
+        <font>作者名：</font>
+        <input type="text" name="b_author" id="b_author" placeholder="作者名"/><br>
+        <span id="author_err"></span><br><br>
+        <button type="button" onclick="insertBookInfo()" style="background-color: limegreen; border-color: limegreen;">立即添加</button>
+    </form>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        function insertBookInfo() {
+            const b_name=$("#b_name").val();
+            const b_author=$("#b_author").val();
+            const bookList={"b_name":b_name,"b_author":b_author};
+            $.ajax({
+                url:"/insertBookInfo",
+                type: "post",
+                data: bookList,
+                success:function(data) {
+                    if(data=="true"){
+                        alert("添加成功！");
+                        return true;
+                    }else{
+                        alert("添加失败！");
+                        return false;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

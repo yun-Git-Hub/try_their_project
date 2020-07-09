@@ -3,7 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.try_their.try_their_project.dao.BookListDao" >
-    <select id="bookInfoAll" resultType="com.try_their.try_their_project.entity.BookList">
-        select b_id,b_name,b_author,b_time from booklist
+    <select id="bookInfoAll" parameterType="int" resultType="com.try_their.try_their_project.entity.BookList">
+        select b_id,b_name,b_author,b_time from booklist where b_userID = #{b_userID}
     </select>
+    <insert id="insertBookInfo" parameterType="com.try_their.try_their_project.entity.BookList">
+        insert into booklist(b_name,b_author,b_userID) values (#{b_name},#{b_author},#{b_userID})
+    </insert>
 </mapper>
