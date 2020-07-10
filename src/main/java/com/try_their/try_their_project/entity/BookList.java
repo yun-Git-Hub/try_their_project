@@ -1,12 +1,19 @@
 package com.try_their.try_their_project.entity;
 
+import com.github.crab2died.annotation.ExcelField;
+
 import java.sql.Timestamp;
 
 public class BookList {
+    /*@ExcelField(title = "存储序号",order = 1)*/
     private int b_id;
+    @ExcelField(title = "书籍名称",order = 2)
     private String b_name;
+    @ExcelField(title = "书籍作者",order = 3)
     private String b_author;
+    /*@ExcelField(title = "用户ID",order = 4)*/
     private int b_userID;
+    /*@ExcelField(title = "存储时间",order = 5)*/
     private Timestamp b_time;
 
     public BookList() {

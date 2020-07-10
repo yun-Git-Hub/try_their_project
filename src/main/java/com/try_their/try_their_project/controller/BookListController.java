@@ -1,7 +1,6 @@
 package com.try_their.try_their_project.controller;
 
 
-import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.try_their.try_their_project.entity.BookList;
@@ -14,11 +13,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static com.try_their.try_their_project.util.excelUtil.ExcelTool.excel2Object2;
 
 @Controller
 public class BookListController {
@@ -86,5 +91,49 @@ public class BookListController {
             }
         }
         return "false";
+    }
+    @ResponseBody
+    @RequestMapping("/excelUpload")
+    public String excelUpload(@RequestParam("file") MultipartFile file,HttpSession session) throws Exception {
+        int user_id = getUser_id(session);//当前用户ID
+        //文件名
+        String fileName = file.getOriginalFilename();
+        //获取文件后缀名
+        String suffixName= fileName.substring(fileName.lastIndexOf("."));
+        System.out.println(suffixName);
+        if(suffixName==".xlsx"||suffixName.equals(".xlsx")){
+            String excelPath="E:\\Code-GitHub\\try_their_project\\src\\main\\resources\\excelFile\\";
+            //拼接完整的路径
+            String path=excelPath+fileName;
+            System.out.println(path);
+            //文件对象
+            File dest=new File(path);
+            System.out.println(dest);
+            //检测文件路径是否存在，如果不存在则新建文件，存在直接写入文件
+            if(!dest.getParentFile().exists()){
+                dest.getParentFile().mkdirs();
+            }
+            //文件写入
+            file.transferTo(dest);
+            int i=0;
+            List<BookList> bookLists = excel2Object2(path);
+            for (BookList bl : bookLists) {
+                bl.setB_userID(user_id);
+                i = bookListServices.insertBookInfo(bl);
+                if (i==0){
+                    break;
+                }
+            }
+            if(i!=0){
+                dest.delete();//删除上传的excel
+                return "true";
+            }
+        }
+            return "false";
+    }
+    @ResponseBody
+    @RequestMapping("/excelDown")
+    public String excelDown(){
+        return "";
     }
 }

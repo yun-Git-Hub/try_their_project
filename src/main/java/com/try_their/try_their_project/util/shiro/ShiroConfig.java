@@ -33,7 +33,8 @@ public class ShiroConfig {
         filterMap.put("/sideOne","authc");
         filterMap.put("/sideTwo","authc");
         filterMap.put("/sideThere","authc");
-        filterMap.put("/sideFour","authc");
+        filterMap.put("/sideDown","authc");
+        filterMap.put("/sideUpload","authc");
         factoryBean.setFilterChainDefinitionMap(filterMap);
 
         factoryBean.setLoginUrl("/index");//设置默认登录页面

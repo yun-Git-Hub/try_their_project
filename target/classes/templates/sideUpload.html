@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导入</title>
+</head>
+<body>
+    <span class="input">
+       <input type="file" name="fileName" id="fileName" placeholder="选择文件"/>
+    </span>
+    <button onclick="ExcelUpload()" style="background-color: limegreen; border-color: limegreen;">导入</button>
+    <span>格式：.xls</span>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+
+        function ExcelUpload(){
+            const formData = new FormData();
+            const excelFile = $("#fileName").val();
+            formData.append("file",$("#fileName")[0].files[0]);
+            formData.append("name",excelFile);
+            $.ajax({
+                url : '/excelUpload',
+                type : 'POST',
+                async : false,
+                data : formData,
+                // 告诉jQuery不要去处理发送的数据
+                processData : false,
+                // 告诉jQuery不要去设置Content-Type请求头
+                contentType : false,
+                beforeSend:function(){
+                    console.log("正在进行，请稍候");
+                },
+                success : function(data ) {
+                    if(data =="true"){
+                        alert("导入成功");
+                    }else{
+                        alert("导入失败");
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

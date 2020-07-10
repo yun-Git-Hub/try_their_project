@@ -45,4 +45,12 @@ public class page {
     public String sideThree(){
         return "sideThree";
     }
+    @RequestMapping("/sideUpload")
+    public String sideUpload(){
+        return "sideUpload";
+    }
+    @RequestMapping("/sideDown")
+    public String sideDown(){
+        return "sideDown";
+    }
 }
