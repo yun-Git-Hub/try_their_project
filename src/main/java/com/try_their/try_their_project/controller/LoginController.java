@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -57,13 +58,8 @@ public class LoginController {
         String userPhone = userInfo.getUserPhone();
         String userName = userInfo.getUser_name();
         String userPassword = userInfo.getUser_password();
-        /*两种登录情况
-        * 用户名登录和手机登录*/
-        if(userInfo.getUser_name()==null){
-            token = new UsernamePasswordToken(userPhone,userPassword);
-        }else{
-            token = new UsernamePasswordToken(userName,userPassword);
-        }
+        /* 用户名登录*/
+        token = new UsernamePasswordToken(userName,userPassword);
         try {
             subject.login(token);
             //model.addAttribute("userName",userInfo.getUser_name());
@@ -76,7 +72,17 @@ public class LoginController {
             return "index";
         }
     }
-
+    @ResponseBody
+    @RequestMapping("/unique")
+    public String unique(String name){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUser_name(name);
+        UserInfo info = infoService.userLogin(userInfo);
+        if(info!=null){
+            return "false";
+        }
+        return "true";
+    }
 
     /**
      * 退出

@@ -37,10 +37,6 @@ public class MyRealm extends AuthorizingRealm {
         UserInfo userInfo = new UserInfo();
         userInfo.setUser_name(token.getUsername());
         UserInfo info = infoService.userLogin(userInfo);
-        if(info==null){
-            userInfo.setUserPhone(token.getUsername());
-            info =infoService.userLogin(userInfo);
-        }
 
         /**
          *从token中获取密码，password，

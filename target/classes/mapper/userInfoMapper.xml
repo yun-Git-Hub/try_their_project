@@ -14,9 +14,6 @@
             <if test="user_name != null and user_name !='' ">
                 and user_name = #{user_name}
             </if>
-            <if test="userPhone != null and user_name != ''">
-                and userPhone = #{userPhone}
-            </if>
             <if test="user_password != null and user_password != ''">
                 and user_password = #{user_password}
             </if>

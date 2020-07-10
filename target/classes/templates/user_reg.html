@@ -83,12 +83,13 @@
         $("#userName").blur(function () {
             const null_reg=/^\s*$/g;
             const name = $("#userName").val();
-            if(null_reg.test(name)){
+            if(!null_reg.test(name)){
                 $.ajax({
-                    url: "",
-                    data: "",
+                    url: "/unique",
+                    type: "post",
+                    data: {"name":name},
                     success:function(data){
-                        if(data==true){
+                        if(data=="true"){
                             $("#name_err").html("<font class='corr'>账户名可用</font>");
                         }else{
                             $("#name_err").html("<font class='err'>账户名已存在</font>")

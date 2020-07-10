@@ -7,12 +7,13 @@
 <body>
     <span class="input">
        <input type="file" name="fileName" id="fileName" placeholder="选择文件"/>
-    </span>
-    <button onclick="ExcelUpload()" style="background-color: limegreen; border-color: limegreen;">导入</button>
-    <span>格式：.xls</span>
+    </span><br>
+    <sapn>
+        <button onclick="ExcelUpload()" style="background-color: limegreen; border-color: limegreen;">导入</button>
+    </sapn><br>
+    <span>格式：.xlsx</span><br>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
-
         function ExcelUpload(){
             const formData = new FormData();
             const excelFile = $("#fileName").val();
