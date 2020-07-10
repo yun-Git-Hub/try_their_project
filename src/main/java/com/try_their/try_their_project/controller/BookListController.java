@@ -38,23 +38,28 @@ public class BookListController {
     }
 
     /**
-     * 查询全部信息
+     * 分页查询全部信息
      * @param model
+     * @param session
+     * @param pageNum
      * @return
      */
     @ResponseBody
     @RequestMapping("/sideTwoPage")
     public Map<String,Object> selectAll(Model model,HttpSession session,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
         int user_id = getUser_id(session);
+        //设置分页，页码 ，每页显示数据条数
         PageHelper.startPage(pageNum,3);
         /**
          * 根据当前用户user_id查询当前用户的全部书单信息并放入arrayList
          */
         ArrayList<BookList> bookLists = bookListServices.bookInfoAll(user_id);
+        //新建pageInfo实现查询结果分页
         PageInfo<BookList> pageInfo = new PageInfo<BookList>(bookLists);
         /*model.addAttribute("pageInfo",pageInfo);
         model.addAttribute("bookLists",bookLists);*/
-        System.out.println(pageNum);
+        //System.out.println(pageNum);
+        //存放bookLists 、pageInfo 返回map
         Map<String,Object> bookPage = new HashMap<>();
         bookPage.put("bookList",bookLists);
         bookPage.put("pageInfo",pageInfo);

@@ -1,3 +1,7 @@
+/**
+ * 左侧导航栏
+ */
+
 function side1(){
     document.getElementById("li_1").style.backgroundColor="black";
     document.getElementById("li_2").style.backgroundColor="";
