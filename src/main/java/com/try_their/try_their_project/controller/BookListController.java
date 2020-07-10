@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.try_their.try_their_project.util.excelUtil.ExcelTool.excel2Object2;
+import static com.try_their.try_their_project.util.excelUtil.ExcelTool.testObject2Excel;
 
 @Controller
 public class BookListController {
@@ -131,9 +132,24 @@ public class BookListController {
         }
             return "false";
     }
+
+    /**
+     * excel导出 "C:try_their_project\\excelFile\\excel.xlsx";
+     * @param session
+     * @return
+     * @throws Exception
+     */
     @ResponseBody
     @RequestMapping("/excelDown")
-    public String excelDown(){
-        return "";
+    public String excelDown(HttpSession session) throws Exception {
+        int user_id = getUser_id(session);//当前用户ID
+        String excelPath="C:try_their_project\\excelFile\\excel.xlsx";
+        ArrayList<BookList> bookLists = bookListServices.bookInfoAll(user_id);
+        testObject2Excel(bookLists,excelPath);
+        File dest=new File(excelPath);
+        if(dest!=null){
+            return "true";
+        }
+        return "false";
     }
 }

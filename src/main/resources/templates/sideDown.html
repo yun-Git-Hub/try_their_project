@@ -5,6 +5,23 @@
     <title>导出</title>
 </head>
 <body>
-
+<button onclick="ExcelDown()" style="background-color: limegreen; border-color: limegreen;">导出</button>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    function ExcelDown(){
+        $.ajax({
+            url : '/excelDown',
+            type : 'POST',
+            data : {},
+            success:function(data){
+                if(data=="true"){
+                    alert("导出成功！路径为:C:try_their_project\\excelFile\\excel.xlxs");
+                }else {
+                    alert("导出失败！");
+                }
+            }
+        })
+    }
+</script>
 </body>
 </html>
