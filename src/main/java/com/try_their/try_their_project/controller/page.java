@@ -37,6 +37,10 @@ public class page {
     public String book_list(){
         return "book_list";
     }
+    @RequestMapping("/sideTwo")
+    public String sideTwo(){
+        return "sideTwo";
+    }
     @RequestMapping("/sideThree")
     public String sideThree(){
         return "sideThree";

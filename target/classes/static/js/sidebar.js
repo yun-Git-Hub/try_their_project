@@ -18,7 +18,6 @@ function side2(){
     document.getElementById("li_5").style.backgroundColor="";
     document.getElementById("li_6").style.backgroundColor="";
     $("#text1").load("sideTwo");
-
     document.getElementById("text1").style.display="flex";
     document.getElementById("text1").style.textAlign="left";
     document.getElementById("text1").style.paddingTop="0px";

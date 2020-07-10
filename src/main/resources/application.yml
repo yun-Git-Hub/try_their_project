@@ -11,4 +11,9 @@ spring:
 mybatis:
   type-aliases-package: com.try_their.try_their_project.entity
   mapper-locations: classpath:mapper/*Mapper.xml
-
+# pageHelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

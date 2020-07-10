@@ -9,4 +9,5 @@ import java.util.ArrayList;
 public interface BookListDao {
     public ArrayList<BookList> bookInfoAll(int userID);
     public int insertBookInfo(BookList bookList);//添加新的bookInfo
+    ArrayList<BookList> bookInfoAllPage(int userID);//分页查询
 }

@@ -9,4 +9,7 @@
     <insert id="insertBookInfo" parameterType="com.try_their.try_their_project.entity.BookList">
         insert into booklist(b_name,b_author,b_userID) values (#{b_name},#{b_author},#{b_userID})
     </insert>
+    <insert id="insertBookInfoPage" parameterType="com.try_their.try_their_project.entity.BookList">
+        insert into booklist(b_name,b_author,b_userID) values (#{b_name},#{b_author},#{b_userID})
+    </insert>
 </mapper>

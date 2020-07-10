@@ -14,12 +14,35 @@
             <td>作者</td>
             <td>添加时间</td>
         </tr>
-        <tr th:each="list,stat:${bookLists}">
-            <td th:text="${list.b_id}"></td>
-            <td th:text="${list.b_name}"></td>
-            <td th:text="${list.b_author}"></td>
-            <td th:text="${list.b_time}"></td>
+        <tbody class="bookBody">
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4">
+                <input type="button" onclick="homePage()" value="首页"></input>
+                <input type="button" onclick="previousPage()" value="上一页"></a>
+                <input type="button" onclick="nextPages()" value="下一页"></a>
+                <input type="button" onclick="lastPage()" value="尾页"></a>
+            </td>
         </tr>
+        <tr>
+            <td colspan="4">
+                当前 <span class="pageNum"></span> 页,总 <span class="pages"></span> 页,共 <span class="total"></span> 条记录
+            </td>
+        </tr>
+        </tfoot>
+
+        <!--
+            <a th:href="@{/sideTwo(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+            <a th:href="@{/sideTwo(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+            <a th:href ="@{/sideTwo(pageNum=${pageInfo.pages})}">尾页</a>
+            <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总 <span th:text="${pageInfo.pages}"></span> 页,共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+         -->
     </table>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/sideTwo.js"></script>
+    <script type="text/javascript">
+
+    </script>
 </body>
 </html>

@@ -1,6 +1,9 @@
 package com.try_their.try_their_project.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.try_their.try_their_project.entity.BookList;
 import com.try_their.try_their_project.entity.UserInfo;
 import com.try_their.try_their_project.services.BookListServices;
@@ -9,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class BookListController {
@@ -36,15 +42,23 @@ public class BookListController {
      * @param model
      * @return
      */
-    @RequestMapping("/sideTwo")
-    public String selectAll(Model model,HttpSession session){
+    @ResponseBody
+    @RequestMapping("/sideTwoPage")
+    public Map<String,Object> selectAll(Model model,HttpSession session,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
         int user_id = getUser_id(session);
+        PageHelper.startPage(pageNum,3);
         /**
          * 根据当前用户user_id查询当前用户的全部书单信息并放入arrayList
          */
         ArrayList<BookList> bookLists = bookListServices.bookInfoAll(user_id);
-        model.addAttribute("bookLists",bookLists);
-        return "sideTwo";
+        PageInfo<BookList> pageInfo = new PageInfo<BookList>(bookLists);
+        /*model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("bookLists",bookLists);*/
+        System.out.println(pageNum);
+        Map<String,Object> bookPage = new HashMap<>();
+        bookPage.put("bookList",bookLists);
+        bookPage.put("pageInfo",pageInfo);
+        return bookPage;
     }
 
     /**
